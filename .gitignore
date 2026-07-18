@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+/data/
+/models/
+/checkpoints/
+/outputs/
+/logs/
+/wandb/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
