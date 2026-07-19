@@ -1,8 +1,10 @@
-__pycache__/
+_pycache__/
 *.py[cod]
 .env
 .venv/
-/data/
+/data/*
+!/data/evaluation/
+!/data/evaluation/**
 /models/
 /checkpoints/
 /outputs/
