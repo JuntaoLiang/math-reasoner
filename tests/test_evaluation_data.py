@@ -57,10 +57,8 @@ def test_load_evaluation_items_missing_field(tmp_path: Path) -> None:
         "problem": "Solve for x: 2x + 3 = 11.",
     }
 
-    file_path.write_text(
-        json.dumps(record) + "\n",
-        encoding="utf-8",
-    )
+    with file_path.open("w", encoding="utf-8") as file:
+        file.write(json.dumps(record) + "\n")
 
     with pytest.raises(
         ValueError,
