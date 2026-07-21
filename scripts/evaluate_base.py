@@ -203,8 +203,8 @@ def print_summary(results: list[EvaluationResult]) -> None:
         "Average generated tokens: "
         f"{average_generated_tokens:.2f}"
     )
-    print(f"Truncated outputs:{truncated_count}")
-    print(f"Truncated rate:{truncated_count / total:.2%}")
+    print(f"Truncated outputs: {truncated_count}")
+    print(f"Truncation rate: {truncated_count / total:.2%}")
 
 
 def main() -> None:
