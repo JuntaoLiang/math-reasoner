@@ -1,0 +1,16 @@
+{
+    "model_path": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "train_data_path": "data/sft/train_sample.jsonl",
+    "output_dir": "/root/autodl-tmp/checkpoints/qwen3-1.7b-sft-smoke",
+    "max_length": 512,
+    "num_train_epochs": 1,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 2,
+    "learning_rate": 0.0002,
+    "logging_steps": 1,
+    "save_steps": 10,
+    "seed": 42,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05
+}
