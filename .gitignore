@@ -16,3 +16,5 @@ _pycache__/
 *.safetensors
 *.ckpt
 *.egg-info/
+!/data/sft/
+!/data/sft/**
