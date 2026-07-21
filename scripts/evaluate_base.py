@@ -4,6 +4,7 @@ import argparse
 import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
+from peft import PeftModel
 
 import torch
 from transformers import (
@@ -40,6 +41,12 @@ def parse_args() -> argparse.Namespace:
         default=Path("/root/autodl-tmp/models/Qwen3-1.7B-Base"),
     )
     parser.add_argument(
+        "--adapter-path",
+        type=Path,
+        default=None,
+        help="Optional path to a trained PEFT adapter.",
+    )
+    parser.add_argument(
         "--dataset-path",
         type=Path,
         default=Path("data/evaluation/math_baseline.jsonl"),
@@ -66,14 +73,15 @@ def parse_args() -> argparse.Namespace:
 def build_prompt(item: EvaluationItem) -> str:
     return (
         f"Problem: {item.problem}\n"
-        "Solve the problem and provide the final numeric answer.\n"
-        "Answer:"
+        "Provide a clear step-by-step solution and a final answer.\n"
+        "Response:"
     )
 
 
 def load_model(
     model_path: Path,
     device: str,
+    adapter_path: Path | None = None,
 ) -> tuple[PreTrainedTokenizerBase, PreTrainedModel]:
     if device.startswith("cuda") and not torch.cuda.is_available():
         raise RuntimeError(
@@ -92,6 +100,18 @@ def load_model(
         model_path,
         dtype=dtype,
     )
+
+    if adapter_path is not None:
+        if not adapter_path.is_dir():
+            raise FileNotFoundError(
+                f"Adapter directory not found: {adapter_path}"
+            )
+
+        model = PeftModel.from_pretrained(
+            model,
+            adapter_path,
+        )
+
     model.to(device)
     model.eval()
 
@@ -213,10 +233,13 @@ def main() -> None:
     items = load_evaluation_items(args.dataset_path)
 
     print(f"Loading model from: {args.model_path}")
+    if args.adapter_path is not None:
+        print(f"Loading adapter from: {args.adapter_path}")
 
     tokenizer, model = load_model(
         model_path=args.model_path,
         device=args.device,
+        adapter_path=args.adapter_path,
     )
 
     results: list[EvaluationResult] = []

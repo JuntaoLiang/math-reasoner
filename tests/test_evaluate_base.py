@@ -20,8 +20,8 @@ def test_build_prompt() -> None:
     prompt = build_prompt(item)
 
     assert "Problem: Solve for x: 2x + 3 = 11." in prompt
-    assert "final numeric answer" in prompt
-    assert prompt.endswith("Answer:")
+    assert "step-by-step solution" in prompt
+    assert prompt.endswith("Response:")
 
 
 def test_save_results(tmp_path: Path) -> None:
