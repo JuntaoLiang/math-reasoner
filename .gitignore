@@ -15,3 +15,4 @@ _pycache__/
 *.bin
 *.safetensors
 *.ckpt
+*.egg-info/
