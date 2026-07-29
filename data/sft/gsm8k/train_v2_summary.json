@@ -1,0 +1,9 @@
+{
+  "base_count": 7473,
+  "candidate_unique_count": 578,
+  "candidate_extra_repeat": 1,
+  "reinforcement_record_count": 578,
+  "final_count": 8051,
+  "reinforcement_rate": 0.07179232393491491,
+  "shuffle_seed": 42
+}

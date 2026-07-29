@@ -1,0 +1,26 @@
+{
+  "source_count": 7473,
+  "category_limit": 150,
+  "max_total": 600,
+  "seed": 42,
+  "matched_before_limit": {
+    "percentage_fraction": 1518,
+    "price_quantity_total": 1844,
+    "remaining_change": 971,
+    "equation_multistep": 1689
+  },
+  "selected_per_category_before_deduplication": {
+    "percentage_fraction": 150,
+    "price_quantity_total": 150,
+    "remaining_change": 150,
+    "equation_multistep": 150
+  },
+  "final_unique_count": 578,
+  "final_unique_rate": 0.07734510905928008,
+  "final_category_membership": {
+    "percentage_fraction": 195,
+    "price_quantity_total": 197,
+    "remaining_change": 232,
+    "equation_multistep": 335
+  }
+}
